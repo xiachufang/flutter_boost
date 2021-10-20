@@ -126,10 +126,6 @@ public class FlutterBoostActivity extends FlutterActivity implements FlutterView
         FlutterBoost.instance().getPlugin().onContainerDisappeared(this);
         getFlutterEngine().getLifecycleChannel().appIsResumed();
 
-        // We Release |PlatformChannel| here to avoid that the native page affected
-        // by system chrome message from flutter.
-        releasePlatformChannel();
-
         // We defer |performDetach| call to new Flutter container's |onResume|.
         setIsFlutterUiDisplayed(false);
         if (DEBUG) Log.d(TAG, "#onPause: " + this + ", isOpaque=" + isOpaque());
